@@ -12,6 +12,13 @@ It works pretty simply.
 pip install crawler@git+https://github.com/bmelton/python-crawler@stable
 ```
 
+Crawler depends on MySQL, so you'll need to have the requisite mysql client libraries in order for pymysql to work.
+On OSX, this is solved for with brew
+
+```
+brew install mysql
+```
+
 ## Usage
 
 ```
