@@ -9,7 +9,7 @@ It works pretty simply.
 ## Installation
 
 ```
-pip install crawler@git+https://github.com/bmelton/python-crawler@1608f1efa473e375bf6ac694b03c79249cb80bb1
+pip install crawler@git+https://github.com/bmelton/python-crawler@stable
 ```
 
 ## Usage
