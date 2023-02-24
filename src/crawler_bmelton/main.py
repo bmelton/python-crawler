@@ -117,6 +117,3 @@ if __name__ == "__main__":
 
     crawler = Crawler(domain=domain, sitemap=sitemap)
     crawler.run()
-
-    crawler.fetch_page(
-        url="https://fancasting.com/series/clczt3vrf000hsfvjh8zcpv0j/the-princess-bride")
