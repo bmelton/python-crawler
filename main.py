@@ -7,8 +7,9 @@ from crawler import guesses
 from time import time
 import markdownify
 from crawler.parser import strip_tags
-
 from data.save import save
+from data.setup import setup
+from nanoid import generate
 
 logging.basicConfig(
     format="%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s",
@@ -24,6 +25,7 @@ class Crawler:
         self.domain = domain
         self.sitemap = sitemap
         self.crawl_delay = 0
+        self.crawl_id = generate(size=10)
 
     def guess_robots_url(self, url):
         return guesses.guess_robots_url(url)
@@ -39,13 +41,8 @@ class Crawler:
 
     def fetch_page(self, url):
         html = requests.get(url).text
-        text = strip_tags(html)
-        md = markdownify.markdownify(
-            text, heading_style="ATX")
-
-        save()
-
-        return text
+        save(crawl_id=self.crawl_id, domain=domain, url=url, html=html)
+        return
 
     def fetch_initial_sitemap(self):
         logging.info(f"Crawling initial domain at {self.domain}")
@@ -75,6 +72,10 @@ class Crawler:
             logging.info(f"Crawling {url}")
             self.crawl_sitemap(url)
             return
+        else:
+            logging.info(f"Crawling {url}")
+            self.add_url_to_visit(url)
+            self.fetch_page(url)
 
     def crawl_sitemap(self, url):
         logging.info(f"Crawling child sitemap at {url}")
@@ -89,6 +90,7 @@ class Crawler:
             self.add_url_to_visit(url)
 
     def run(self):
+        setup()
         robots_url = self.guess_robots_url(self.domain)
         self.rp.set_url(robots_url)
         self.rp.read()
