@@ -6,6 +6,14 @@ You're welcome to use it, but it's only as modular as we've needed it to be, whi
 
 It works pretty simply.
 
+## Installation
+
+```
+pip install crawler@git+https://github.com/bmelton/python-crawler@1608f1efa473e375bf6ac694b03c79249cb80bb1
+```
+
+## Usage
+
 ```
 from crawler import crawler
 crawler = Crawler(domain="https://yourdomain.com", sitemap="https://yourdomain.com/sitemap.xml")
