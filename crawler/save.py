@@ -1,8 +1,7 @@
-from sqlalchemy import text
 from sqlalchemy.orm import Session
-from .database import get_engine
-from .models import Crawls
-from crawl.parser import strip_tags
+from database import get_engine
+from models import Crawls
+from parser import strip_tags
 import markdownify
 
 

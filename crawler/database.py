@@ -1,11 +1,12 @@
 from sqlalchemy import create_engine
-from .models import metadata
+from models import metadata
 import os
 from dotenv import load_dotenv
 
 
 load_dotenv()
-    
+
+
 def get_engine():
     user = os.getenv('DB_USER')
     pw = os.getenv('DB_PASS')
