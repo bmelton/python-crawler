@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "percentipedecrawler"
-version = "0.0.8"
+version = "0.0.11"
 authors = [
   { name="Barry Melton", email="barry@sureisfun.com" },
 ]
@@ -19,7 +19,9 @@ classifiers = [
 
 
 [tool.hatch.build.targets.wheel]
-include = ["crawler/Crawler.py"]
+include = [
+  "crawler/*",
+]
 
 
 dependencies = [
