@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine
-from models import metadata
+from .models import metadata
 import os
 from dotenv import load_dotenv
 
