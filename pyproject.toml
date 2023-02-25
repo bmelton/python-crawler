@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "percentipedecrawler"
-version = "0.0.14"
+version = "0.0.15"
 authors = [
   { name="Barry Melton", email="barry@sureisfun.com" },
 ]
@@ -20,7 +20,7 @@ classifiers = [
 
 [tool.hatch.build.targets.wheel]
 include = [
-  "crawler/*",
+  "percentipedecrawler/*",
 ]
 
 
