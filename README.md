@@ -42,3 +42,10 @@ It requires a MySQL config to work, which you can trivially solve for with this 
 ```
 docker run -d -p 33060:3306 -e MYSQL_ROOT_PASSWORD=<PASSWORD> -v mysql:/var/lib/mysql  --name mysql mysql
 ```
+
+## Building / Distributing
+
+```
+python3 -m build
+python3 -m twine upload dist/* --skip-existing
+```
