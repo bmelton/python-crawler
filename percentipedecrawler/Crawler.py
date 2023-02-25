@@ -6,12 +6,11 @@ import urllib.robotparser
 from time import time
 from nanoid import generate
 from sqlalchemy.orm import Session
-from database import get_engine
-from models import Crawls
+from .database import get_engine
+from .models import Crawls
 import markdownify
 from bs4 import BeautifulSoup
 from models import metadata
-from database import get_engine
 
 
 def setup():
