@@ -3,18 +3,13 @@ from urllib.parse import urljoin
 import requests
 from lxml import etree
 import urllib.robotparser
-from crawler import guesses
+from crawl import guesses
+from crawl.parser import strip_tags
 from time import time
 import markdownify
-from crawler.parser import strip_tags
 from data.save import save
 from data.setup import setup
 from nanoid import generate
-
-logging.basicConfig(
-    format="%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s",
-    level=logging.INFO
-)
 
 
 class Crawler:
@@ -41,7 +36,7 @@ class Crawler:
 
     def fetch_page(self, url):
         html = requests.get(url).text
-        save(crawl_id=self.crawl_id, domain=domain, url=url, html=html)
+        save(crawl_id=self.crawl_id, domain=self.domain, url=url, html=html)
         return
 
     def fetch_initial_sitemap(self):
@@ -109,11 +104,3 @@ class Crawler:
             self.crawl(url)
             if self.crawl_delay:
                 time.sleep(self.crawl_delay)
-
-
-if __name__ == "__main__":
-    domain = "https://fancasting.com"
-    sitemap = "https://fancasting.com/sitemap.xml"
-
-    crawler = Crawler(domain=domain, sitemap=sitemap)
-    crawler.run()
