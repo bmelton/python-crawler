@@ -9,7 +9,7 @@ It works pretty simply.
 ## Installation
 
 ```
-pip install crawler@git+https://github.com/bmelton/python-crawler@stable
+pip install percentipedecrawler
 ```
 
 Crawler depends on MySQL, so you'll need to have the requisite mysql client libraries in order for pymysql to work.
@@ -22,7 +22,7 @@ brew install mysql
 ## Usage
 
 ```
-from crawler import crawler
+from crawler.Crawler import Crawler
 crawler = Crawler(domain="https://yourdomain.com", sitemap="https://yourdomain.com/sitemap.xml")
 crawler.run()
 ```
