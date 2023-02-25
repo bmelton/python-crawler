@@ -3,8 +3,6 @@ from urllib.parse import urljoin
 import requests
 from lxml import etree
 import urllib.robotparser
-import guesses
-from parser import strip_tags
 from time import time
 from save import save
 from setup import setup
@@ -25,10 +23,12 @@ class Crawler:
         self.crawl_id = generate(size=10)
 
     def guess_robots_url(self, url):
-        return guesses.guess_robots_url(url)
+        logging.info("Guessing robots.txt url")
+        return urljoin(url, "/robots.txt")
 
     def guess_sitemap_url(self, url):
-        return guesses.guess_sitemap_url(url)
+        logging.info("Guessing sitemap url")
+        return urljoin(url, "/sitemap.xml")
 
     def evaluate_robots(self, url):
         rp = urllib.robotparser.RobotFileParser()

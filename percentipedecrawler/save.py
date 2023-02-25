@@ -1,8 +1,15 @@
 from sqlalchemy.orm import Session
 from database import get_engine
 from models import Crawls
-from parser import strip_tags
 import markdownify
+from bs4 import BeautifulSoup
+
+
+def strip_tags(html):
+    soup = BeautifulSoup(html, 'html.parser')
+    head = soup.find("head")
+    head.clear()
+    return soup.body.get_text()
 
 
 def save(crawl_id, domain, url, html):
