@@ -9,6 +9,9 @@ from time import time
 from save import save
 from setup import setup
 from nanoid import generate
+import sys
+
+sys.path.append(".")
 
 
 class Crawler:
