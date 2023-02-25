@@ -4,7 +4,6 @@ import requests
 from lxml import etree
 import urllib.robotparser
 from time import time
-from setup import setup
 from nanoid import generate
 from sqlalchemy.orm import Session
 from database import get_engine
